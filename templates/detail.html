@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<style>
+</style>
+<div class="container mt-5" id="box">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{article.title}}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">{{article.created_date}} de yayınlandı</div>
+                    <div class="text-muted fst-italic mb-2"><strong>{{article.author.username}}</strong> tarafından yazıldı</div>
+                    <hr>
+                </header>
+                <!-- Preview image figure-->
+                {% if article.article_image %}
+                <figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure>
+                {% endif %}
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-3">{{article.content|safe}}</p>  
+                                        <!-- Comments section-->
+                                        <section class="mb-5">
+                                            <div class="card bg-light">
+                                                <div class="card-body">
+                                                    <!-- Comment form-->  
+                                                    <form method="post" action="{% url 'article:comment' article.id %}" class="mb-4"><div class="form-group">
+                                                        <textarea name="comment_content" class="form-control" rows="3" placeholder="Yorum Ekle... (Lütfen argo, küçük düşürücü ve ırkçı yorumlar yapmayınız)"></textarea> 
+                                                      </div>
+                                                    <button type="submit" class="btn btn-primary" style="color: white; background-image: url('https://c.tenor.com/NXQ8OEBqZ0EAAAAC/galaxy-stars.gif'); float: right;">Yorum Ekle</button></form>
+                                                    <!-- Comment with nested comments-->
+                                                    <div class="d-flex mb-4">
+                                                        <!-- Parent comment-->
+                                                        
+                                                            {% if comments %}
+                                                                {% for comment in comments %}
+                                                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                                                <div class="ms-3">
+                                                                <div class="fw-bold">{{article.author.username}}</div>
+
+                                                                <p style="opacity: 0.4;">{{comment.comment_date}}</p>
+                                                                <p>{{comment.comment_content}}</p>
+                                                                  
+                                                                {% endfor %}
+
+
+                                                            {% else %}
+                                                            <div class="alert alert-danger">Bu makaleye herhangi bir yorum yapılmamış, ilk yapan siz olun!</div>
+                                                            
+                                                              
+                                                            {% endif %}
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+            </section>
+            </article>
+{% endblock body %}

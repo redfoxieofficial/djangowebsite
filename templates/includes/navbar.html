@@ -1,0 +1,183 @@
+
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
+ 
+    <input type="checkbox" id="check" />
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <header><a href="/" style="text-decoration: none; font-family: 'Russo One', sans-serif; color: white">Çağan K.</a></header>
+      <ul>
+        <li>
+            <a href="{% url 'about' %}"><i class="far fa-question-circle"></i>Hakkımda</a>
+        </li>
+        <li>
+          <a href="/articles/"><i class="fas fa-laptop-code"></i>Makaleler</a>
+        </li>
+
+        <li>
+          <a href="/cv"><i class="far fa-file"></i>CV</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li>
+          <a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i>Çıkış Yap</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'user:login' %}"><i class="fas fa-user-secret"></i>Giriş Yap</a>
+        </li>
+          
+        <li>
+          <a href="{% url 'user:register' %}"><i class="fas fa-user-tie"></i>Kayıt Ol</a>
+        </li>
+        {% endif %}
+
+
+
+
+
+
+        <li>
+          <a href="{% url 'contact' %}"><i class="far fa-envelope"></i>Ulaşın</a>
+        </li>
+
+      </ul>
+      <p id="c">Telif Hakkı © Çağan Kılınç</p>
+    </div>
+ 
+  
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500");
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  margin-top: -25px;
+ 
+}
+
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 1000%;
+  background: #011016;
+  transition: all 0.5s ease;
+  z-index: 1110;
+}
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: #022635;
+  user-select: none;
+}
+.sidebar ul a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.4s;
+}
+ul li:hover a {
+  padding-left: 50px;
+}
+.sidebar ul a i {
+  margin-right: 16px;
+}
+#check {
+  display: none;
+}
+label #btn,
+label #cancel {
+  position: absolute;
+  background: #042331;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 9999999999;
+  
+
+}
+label #btn {
+  left: 40px;
+  top: 28px;
+  font-size: 30px;
+  color: white;
+  padding: 6px 12px;
+  transition: all 0.5s;
+  opacity: 0.4;
+  position: fixed;
+  z-index: 9999999999999999999;
+
+}
+
+@media (max-width: 960px){
+    label #btn {
+        left: 4px;
+        top: 1px;
+        font-size: 30px;
+        color: white;
+        padding: 6px 12px;
+        transition: all 0.5s;
+        opacity: 0.4;
+        z-index: 9999999;
+
+}
+}
+
+
+label #cancel {
+  z-index: 1111;
+  left: -195px;
+  top: 16px;
+  font-size: 30px;
+  color: #042a3d;
+  padding: 4px 9px;
+  transition: all 0.5s ease;
+  position: fixed;
+}
+
+#check:checked ~ .sidebar {
+  left: 0;
+}
+#check:checked ~ label #btn {
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+#check:checked ~ label #cancel {
+  left: 195px;
+  background-color: black;
+  z-index: 9999999999999;
+}
+#check:checked ~ section {
+  margin-left: 250px;
+}
+
+#c{
+  display: block;
+  font-size: 16px;
+  color: gray;
+  padding-left: 30px;
+  box-sizing: border-box;
+  transition: 0.4s;
+  margin-top: 4vh;
+  border-bottom: 0.2px white solid;
+}
+
+
+</style>

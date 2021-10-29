@@ -1,0 +1,275 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<style>
+body {
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5385;
+    color: #333;
+    text-align: left;
+    background-image: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
+    background-repeat: repeat;
+}
+
+#content {
+  position: absolute;
+  height: 50px;
+  width: 300px;
+  margin-left: 170px;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#content.on {
+  -webkit-animation-name: in-out;
+  animation-name: in-out;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+input {
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Roboto;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+    padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+    padding 0.2s;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+
+.search {
+  background: none;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 100%;
+  outline: 0;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+
+.search:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  background-color: #fff;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 26px;
+  margin-left: 17px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.close {
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.close:before {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 4px;
+  margin-top: -1px;
+  margin-left: -13px;
+  background-color: #fff;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.close:after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 4px;
+  background-color: #fff;
+  margin-top: -1px;
+  margin-left: -13px;
+  cursor: pointer;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.square {
+  box-sizing: border-box;
+  padding: 0 40px 0 10px;
+  width: 300px;
+  height: 50px;
+  border: 4px solid #ffffff;
+  border-radius: 0;
+  background: none;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  -webkit-transition-delay: 0.4s, 0s, 0.4s;
+  transition-delay: 0.4s, 0s, 0.4s;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+
+
+.mt-50 {
+    margin-top: 50px
+}
+
+.mb-50 {
+    margin-bottom: 50px
+}
+
+.card-header:not([class*=bg-]):not([class*=alpha-]) {
+    background-color: transparent;
+    padding-top: 1.25rem
+}
+
+.header-elements-inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap
+}
+
+a {
+    text-decoration: none !important;
+    color: red
+}
+
+.img-preview {
+    max-height: 5rem
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    margin-top: 100px;
+  }
+}
+
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+  .card{
+      margin-top: 130px;
+  }
+}
+
+@media all and (device-width: 1024px) and (device-height: 1366px) {
+    .card{
+      margin-top: 130px;
+  }
+}
+
+
+</style>
+<form id="content" style="z-index: 2;">
+    <input type="text" name="keyword" class="input" id="search-input">
+    <button type="reset" class="search" id="search-btn"></button>
+  </form>
+{% if articles %}
+
+
+{% for article in articles %}
+  
+
+
+
+<p>
+
+    <div class="container d-flex justify-content-center mt-50 mb-50">
+        <div class="card" style="background-color: rgb(223, 228, 230);">
+            <div class="card-header header-elements-inline">
+                <h6 class="card-title">{{article.author.username}} tarafından paylaşıldı</h6>
+                <div class="header-elements">
+                    <div class="list-icons mb-2"> <a class="fa fa-close" data-action="collapse" data-abc="true"></a> </div>
+                </div>
+            </div>
+            <div class="card-body pb-0">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="media flex-column flex-sm-row mt-0 mb-3">
+                            <div class="mr-sm-3 mb-2 mb-sm-0">
+                                {% if article.article_image %}
+                                <div class="card-img-actions"> <a href="#" data-abc="true"> <img src="{{article.article_image.url}}" class="img-fluid img-preview rounded" alt=""> </a> </div>
+                                {% endif %}
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-title"><a href="article/{{article.id}}" data-abc="true">{{article.title}}</a></h6>
+                                <ul class="list-inline list-inline-dotted text-muted mb-2">
+                                    <li class="list-inline-item"><i class="fas fa-clock"></i> {{article.created_date}} de yayınlandı </li>
+                                </ul> <p style="opacity: 0.6; display: inline;"> {{article.content|safe|truncatewords:40}}</p>
+                                <a href="/articles/article/{{article.id}}" class="btn btn-danger" style=" background-color: black; border: none; float: right;">Devamını Oku...</a>
+
+                            </div>
+                        
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p>
+
+
+
+{% endfor %}
+{% endif %}
+<script>
+    const input = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+    
+    const expand = () => {
+      searchBtn.classList.toggle("close");
+      input.classList.toggle("square");
+    };
+    
+    searchBtn.addEventListener("click", expand);
+    
+    </script>
+  
+{% endblock body %}

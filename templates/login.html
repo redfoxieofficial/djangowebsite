@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<style>
+    body{
+        background-image: url("https://i.pinimg.com/originals/c9/ee/34/c9ee34bdeff5c1dc155f18d1d5f773bf.gif")
+    }
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.login-block{
+background: -webkit-linear-gradient(to bottom, black,  white); 
+background: linear-gradient(to bottom,  black,white); 
+float:left;
+width:100%;
+margin-top: -10%;
+padding : 0px 0;
+}
+.banner-sec{background:url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/750px-Black_flag.svg.png")  no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
+.container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+.carousel-inner{border-radius:0 10px 10px 0;}
+.carousel-caption{text-align:left; left:5%;}
+.login-sec{padding: 50px 30px; position:relative;}
+.login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+.login-sec .copy-text i{color:#FEB58A;}
+.login-sec .copy-text a{color:#E36262;}
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: black;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:black; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.btn-login{background: black; color:#fff; font-weight:600;}
+.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
+.banner-text h2{color:#fff; font-weight:600;}
+.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
+.banner-text p{color:#fff;}
+
+@media only screen and (max-width: 600px) {
+    .login-block{
+        background: -webkit-linear-gradient(to bottom, black,  aqua); 
+        background: linear-gradient(to bottom,white); 
+        float:left;
+        width:100%;
+        margin-top: -10%;
+        padding : 0px 0;
+    }
+    .col-md-8{
+        background-image: url("../static/extra/color.gif");
+        border: none;
+    }
+
+}
+
+
+</style>
+
+<section class="login-block">
+{% load crispy_forms_tags %}
+<form method="post">
+    <div class="container">
+	<div class="row">
+		<div class="col-md-4 login-sec">
+		    <h2 class="text-center">Giriş Yap</h2>
+		    <form class="login-form">
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          {{form| crispy}} 
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+    <div class="form-check">
+      <br>
+    <button type="submit" class="btn btn-login float-right">Submit</button>
+  </div>
+  
+</form>
+		</div>
+		<div class="col-md-8 banner-sec">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                 <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  </ol>
+            <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid"  src="https://wallpaperaccess.com/full/391239.jpg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="banner-text">
+            <h2>Başlayın</h2>
+            <p>Her şeye yeniden başlamak için bazen gitmek gerekir.
+            </p>
+        </div>	
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="https://wallpaperaccess.com/full/7280.jpg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="banner-text">
+            <h2 style="font-style: italic;">Daha Çok Vakit Kaybetme</h2>
+            <p>Vaktinde bir adım atmayan tembel, sonradan yüz adım atmak zorunda kalır.</p>
+        </div>	
+    </div>
+    </div>
+    
+  </div>
+            </div>	   
+		    
+		</div>
+	</div>
+</div>
+</section>
+
+{% endblock body %}
